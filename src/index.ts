@@ -53,6 +53,12 @@ export const options = {
         description:
             'Array of globs for side-effect-only imports that are considered safe to sort.',
     },
+    removeUnusedImports: {
+        type: 'boolean',
+        category: 'Global',
+        default: false,
+        description: 'Remove unused imports?',
+    },
 } satisfies Record<
     keyof PluginConfig,
     StringArraySupportOption | BooleanSupportOption | StringSupportOption

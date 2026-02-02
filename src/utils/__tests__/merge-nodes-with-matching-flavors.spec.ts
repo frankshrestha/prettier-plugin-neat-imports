@@ -16,6 +16,7 @@ const defaultOptions = examineAndNormalizePluginOptions({
     importOrderCaseSensitive: false,
     importOrderParserPlugins: [],
     importOrderSafeSideEffects: [],
+    removeUnusedImports: false,
     filepath: __filename,
 });
 

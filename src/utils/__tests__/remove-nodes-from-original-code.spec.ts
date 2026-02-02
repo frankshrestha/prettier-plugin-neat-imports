@@ -30,6 +30,7 @@ test('it should remove nodes from the original code', async () => {
         importOrderCombineTypeAndValueImports: true,
         importOrderCaseSensitive: false,
         importOrderSafeSideEffects: [],
+        removeUnusedImports: false,
         hasAnyCustomGroupSeparatorsInImportOrder: false,
         provideGapAfterTopOfFileComments: false,
     });

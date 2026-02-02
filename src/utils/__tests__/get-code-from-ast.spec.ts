@@ -24,6 +24,7 @@ import a from 'a';
         importOrderCombineTypeAndValueImports: true,
         importOrderCaseSensitive: false,
         importOrderSafeSideEffects: [],
+        removeUnusedImports: false,
         hasAnyCustomGroupSeparatorsInImportOrder: false,
         provideGapAfterTopOfFileComments: false,
     });
@@ -60,6 +61,7 @@ import type {See} from 'c';
         importOrderCombineTypeAndValueImports: true,
         importOrderCaseSensitive: false,
         importOrderSafeSideEffects: [],
+        removeUnusedImports: false,
         hasAnyCustomGroupSeparatorsInImportOrder: false,
         provideGapAfterTopOfFileComments: false,
     });
@@ -93,6 +95,7 @@ import c from 'c' assert { type: 'json' };
         importOrderCombineTypeAndValueImports: true,
         importOrderCaseSensitive: false,
         importOrderSafeSideEffects: [],
+        removeUnusedImports: false,
         hasAnyCustomGroupSeparatorsInImportOrder: false,
         provideGapAfterTopOfFileComments: false,
     });

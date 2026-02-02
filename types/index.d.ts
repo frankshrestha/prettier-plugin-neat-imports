@@ -110,6 +110,13 @@ export interface PluginConfig {
      *  @default []
      */
     importOrderSafeSideEffects?: string[];
+
+    /**
+     * A boolean value to enable or disable removal of unused imports.
+     *
+     * @default false
+     */
+    removeUnusedImports?: boolean;
 }
 
 export type PrettierConfig = PluginConfig & Config;

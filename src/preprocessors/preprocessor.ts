@@ -1,10 +1,11 @@
 import { parse as babelParser, ParserOptions } from '@babel/parser';
 
-import { PrettierOptions } from '../types';
+import { ExtendedOptions, PrettierOptions } from '../types';
 import { extractASTNodes } from '../utils/extract-ast-nodes';
 import { getCodeFromAst } from '../utils/get-code-from-ast';
 import { getSortedNodes } from '../utils/get-sorted-nodes';
 import { examineAndNormalizePluginOptions } from '../utils/normalize-plugin-options';
+import { removeUnusedImports } from '../utils/remove-unused-imports';
 
 /**
  *
@@ -20,7 +21,7 @@ export function preprocessor(
         parseableCode,
     }: { options: PrettierOptions; parseableCode?: string },
 ): string {
-    const { plugins, ...remainingOptions } =
+    const { plugins, ...remainingOptions }: ExtendedOptions =
         examineAndNormalizePluginOptions(options);
 
     const parserOptions: ParserOptions = {
@@ -33,6 +34,12 @@ export function preprocessor(
         allowUndeclaredExports: true,
         plugins,
     };
+
+    originalCode = removeUnusedImports(
+        options.filepath,
+        originalCode,
+        remainingOptions,
+    );
 
     // short-circuit if importOrder is an empty array (can be used to disable plugin)
     if (!remainingOptions.importOrder.length) {

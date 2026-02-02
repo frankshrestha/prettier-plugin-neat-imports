@@ -1,9 +1,10 @@
 # Prettier plugin sort imports <!-- omit in toc -->
 
-A prettier plugin to sort import declarations by provided Regular Expression order, while preserving side-effect import order.
+A prettier plugin to sort import declarations by provided Regular Expression order, while preserving side-effect import order and optionally remove unused imports.
 
-This project is based on [@trivago/prettier-plugin-sort-imports](https://github.com/trivago/prettier-plugin-sort-imports), but adds additional features:
+This project is based on [@ianvs/prettier-plugin-sort-imports](https://github.com/IanVS/prettier-plugin-sort-imports) and copies a feature from [prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports).
 
+## Features
 - Does not re-order across side-effect imports by default
 - Combines imports from the same source
 - Combines type and value imports (if `importOrderTypeScriptVersion` is set to `"4.5.0"` or higher)
@@ -12,6 +13,7 @@ This project is based on [@trivago/prettier-plugin-sort-imports](https://github.
 - Supports custom import order separation
 - Handles comments around imports correctly
 - Simplifies options for easier configuration
+- Removes unused imports (with `removeUnusedImports` set to `true`)
 
 [We welcome contributions!](./CONTRIBUTING.md)
 
@@ -37,6 +39,7 @@ This project is based on [@trivago/prettier-plugin-sort-imports](https://github.
     - [`importOrderTypeScriptVersion`](#importordertypescriptversion)
     - [`importOrderParserPlugins`](#importorderparserplugins)
     - [`importOrderCaseSensitive`](#importordercasesensitive)
+    - [`removeUnusedImports`](#removeunusedimports)
   - [Prevent imports from being sorted](#prevent-imports-from-being-sorted)
   - [Comments](#comments)
 - [FAQ / Troubleshooting](#faq--troubleshooting)
@@ -104,6 +107,12 @@ import { add, filter, repeat } from '../utils';
 
 ## Install
 
+bun
+
+```shell
+bun add --dev @ianvs/prettier-plugin-sort-imports
+```
+
 npm
 
 ```shell
@@ -143,6 +152,7 @@ module.exports = {
     importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
     importOrderTypeScriptVersion: '5.0.0',
     importOrderCaseSensitive: false,
+    removeUnusedImports: true,
 };
 ```
 
@@ -458,6 +468,33 @@ import ExampleComponent from './ExampleComponent';
 import ExampleWidget from './ExampleWidget';
 import ExamplesList from './ExamplesList';
 import {CatComponent, DogComponent, catFilter, dogFilter} from './animals';
+```
+
+#### `removeUnusedImports`
+
+**type**: `boolean`
+
+**default value**: `false`
+
+A boolean value to enable or disable removal of unused imports.
+
+For example, when false (or not specified):
+
+```javascript
+import { x, y, z } from './alphabets';
+import hello from 'words';
+import 'characters';
+
+z();
+```
+
+compared with `"removeUnusedImports": true`:
+
+```javascript
+import { z } from './alphabets';
+import 'characters';
+
+z();
 ```
 
 ### Prevent imports from being sorted

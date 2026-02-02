@@ -98,6 +98,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderCaseSensitive: false,
                 importOrderTypeScriptVersion: '1.0.0',
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: true,
                 filepath: __filename,
             }),
         ).toEqual({
@@ -112,6 +113,7 @@ describe('examineAndNormalizePluginOptions', () => {
             plugins: [],
             provideGapAfterTopOfFileComments: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: true,
         });
     });
     test('it should detect group separators anywhere (relevant for side-effects)', () => {
@@ -127,6 +129,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderCaseSensitive: false,
                 importOrderTypeScriptVersion: '1.0.0',
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: false,
                 filepath: __filename,
             }),
         ).toEqual({
@@ -140,6 +143,7 @@ describe('examineAndNormalizePluginOptions', () => {
             importOrderCombineTypeAndValueImports: true,
             importOrderCaseSensitive: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: false,
             plugins: [],
             provideGapAfterTopOfFileComments: false,
         });
@@ -152,6 +156,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderCaseSensitive: false,
                 importOrderTypeScriptVersion: '1.0.0',
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: false,
                 filepath: __filename,
             }),
         ).toEqual({
@@ -164,6 +169,7 @@ describe('examineAndNormalizePluginOptions', () => {
             importOrderCombineTypeAndValueImports: true,
             importOrderCaseSensitive: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: false,
             plugins: [],
             provideGapAfterTopOfFileComments: true,
         });
@@ -176,6 +182,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderTypeScriptVersion: '5.0.0',
                 importOrderCaseSensitive: false,
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: false,
                 filepath: __filename,
             }),
         ).toEqual({
@@ -188,6 +195,7 @@ describe('examineAndNormalizePluginOptions', () => {
             importOrderCombineTypeAndValueImports: true,
             importOrderCaseSensitive: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: false,
             plugins: ['typescript'],
             provideGapAfterTopOfFileComments: false,
         });
@@ -201,6 +209,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderTypeScriptVersion: '5.0.0',
                 importOrderCaseSensitive: false,
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: false,
                 filepath: __filename,
             }),
         ).toEqual({
@@ -213,6 +222,7 @@ describe('examineAndNormalizePluginOptions', () => {
             importOrderCombineTypeAndValueImports: true,
             importOrderCaseSensitive: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: false,
             plugins: ['typescript'],
             provideGapAfterTopOfFileComments: false,
         });
@@ -225,6 +235,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderCaseSensitive: false,
                 importOrderTypeScriptVersion: '1.0.0',
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: false,
                 filepath: undefined,
             }),
         ).toEqual({
@@ -237,6 +248,7 @@ describe('examineAndNormalizePluginOptions', () => {
             importOrderCombineTypeAndValueImports: true,
             importOrderCaseSensitive: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: false,
             plugins: [],
             provideGapAfterTopOfFileComments: false,
         });
@@ -250,6 +262,7 @@ describe('examineAndNormalizePluginOptions', () => {
                 importOrderCaseSensitive: false,
                 importOrderTypeScriptVersion: '1.0.0',
                 importOrderSafeSideEffects: [],
+                removeUnusedImports: false,
                 filepath: __filename,
             }),
         ).toEqual({
@@ -258,6 +271,7 @@ describe('examineAndNormalizePluginOptions', () => {
             importOrderCombineTypeAndValueImports: true,
             importOrderCaseSensitive: false,
             importOrderSafeSideEffects: [],
+            removeUnusedImports: false,
             plugins: [],
             provideGapAfterTopOfFileComments: false,
         });

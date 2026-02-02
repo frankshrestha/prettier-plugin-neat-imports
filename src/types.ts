@@ -24,6 +24,7 @@ export type NormalizableOptions = Pick<
     | 'importOrderTypeScriptVersion'
     | 'importOrderCaseSensitive'
     | 'importOrderSafeSideEffects'
+    | 'removeUnusedImports'
 > &
     // filepath can be undefined when running prettier via the api on text input
     Pick<Partial<PrettierOptions>, 'filepath'>;
