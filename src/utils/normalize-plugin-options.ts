@@ -76,7 +76,7 @@ export function examineAndNormalizePluginOptions(options: NormalizableOptions) {
     const isTSSemverValid = semver.valid(importOrderTypeScriptVersion);
     if (!isTSSemverValid) {
         console.warn(
-            `[@ianvs/prettier-plugin-sort-imports]: The option importOrderTypeScriptVersion is not a valid semver version and will be ignored.`,
+            `[@frankshrestha/prettier-plugin-neat-imports]: The option importOrderTypeScriptVersion is not a valid semver version and will be ignored.`,
         );
         importOrderTypeScriptVersion = '1.0.0';
     }

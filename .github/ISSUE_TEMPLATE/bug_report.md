@@ -4,7 +4,7 @@ about: A feature is not working as is expected, I want to report a bug
 labels: 'investigation'
 title: ''
 assignees:
-    - ianvs
+    - frankshrestha
 ---
 
 <!-- PLEASE READ THIS:
@@ -48,6 +48,6 @@ assignees:
 
 <!-- A clear and concise description. -->
 
-**Contribute to @ianvs/prettier-plugin-sort-imports**
+**Contribute to @frankshrestha/prettier-plugin-neat-imports**
 
 - [ ] I'm willing to fix this bug 🥇

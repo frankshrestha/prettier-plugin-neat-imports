@@ -86,7 +86,7 @@ via prettier config.
 
 ```js
 module.exports = {
-    plugins: [require('@ianvs/prettier-plugin-sort-imports')],
+    plugins: [require('@frankshrestha/prettier-plugin-neat-imports')],
 };
 ```
 

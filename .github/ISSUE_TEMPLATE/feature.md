@@ -4,7 +4,7 @@ about: You want a feature request.
 title: ''
 labels: 'feature request'
 assignees:
-    - ianvs
+    - frankshrestha
 ---
 
 **Is your feature request related to a problem?**

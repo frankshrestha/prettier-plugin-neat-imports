@@ -2,7 +2,7 @@
 
 ---
 
-See [Github Releases](https://github.com/IanVS/prettier-plugin-sort-imports/releases) for newer versions.
+See [Github Releases](https://github.com/frankshrestha/prettier-plugin-neat-imports/releases) for newer versions.
 
 ### v3.2.0
 

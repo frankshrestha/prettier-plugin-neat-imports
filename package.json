@@ -1,15 +1,15 @@
 {
-    "name": "@ianvs/prettier-plugin-sort-imports",
+    "name": "@frankshrestha/prettier-plugin-neat-imports",
     "private": false,
-    "version": "4.7.0",
-    "description": "A prettier plugins to sort imports in provided RegEx order",
+    "version": "1.0.0",
+    "description": "Prettier plugin to sort imports in provided RegEx order and optionally remove unused imports",
     "main": "lib/src/index.js",
     "types": "types/index.d.ts",
     "repository": {
-        "url": "git+https://github.com/ianvs/prettier-plugin-sort-imports.git",
+        "url": "git+https://github.com/frankshrestha/prettier-plugin-neat-imports.git",
         "type": "git"
     },
-    "homepage": "https://github.com/ianvs/prettier-plugin-sort-imports#readme",
+    "homepage": "https://github.com/frankshrestha/prettier-plugin-neat-imports#readme",
     "files": [
         "CHANGELOG.md",
         "lib/**",
@@ -31,6 +31,7 @@
         "prettier",
         "plugin",
         "sort",
+        "unused",
         "import",
         "typescript",
         "javascript"

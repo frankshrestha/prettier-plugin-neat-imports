@@ -30,7 +30,7 @@ function parse(file: string, options?: PreprocessorOptions): Parsed[] {
         Preprocessor = require('content-tag').Preprocessor;
     } catch {
         throw new Error(
-            ' [error] [prettier-plugin-sort-imports]: Please install content-tag@^4.0.0 to use this plugin with Ember template tags.',
+            ' [error] [prettier-plugin-neat-imports]: Please install content-tag@^4.0.0 to use this plugin with Ember template tags.',
         );
     }
     const preprocessor = new Preprocessor();
@@ -83,7 +83,7 @@ export function preprocessTemplateRange(
     // correct version unless the user installs it explicitly
     if (!template.range.hasOwnProperty('startByte')) {
         throw new Error(
-            ' [error] [prettier-plugin-sort-imports]: Please install content-tag@^4.0.0 to use this plugin with Ember template tags.',
+            ' [error] [prettier-plugin-neat-imports]: Please install content-tag@^4.0.0 to use this plugin with Ember template tags.',
         );
     }
 

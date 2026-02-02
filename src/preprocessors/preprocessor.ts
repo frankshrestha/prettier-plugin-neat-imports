@@ -56,7 +56,7 @@ export function preprocessor(
             options.parentParser !== 'mdx'
         ) {
             console.error(
-                ' [error] [prettier-plugin-sort-imports]: import sorting aborted due to parsing error:\n%s',
+                ' [error] [prettier-plugin-neat-imports]: import sorting aborted due to parsing error:\n%s',
                 err,
             );
         }

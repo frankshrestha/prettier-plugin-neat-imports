@@ -61,7 +61,7 @@ export function vuePreprocessor(code: string, options: PrettierOptions) {
     } catch (err) {
         if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
             console.warn(
-                '[@ianvs/prettier-plugin-sort-imports]: Could not process .vue file.  Please be sure that "@vue/compiler-sfc" is installed in your project.',
+                '[@frankshrestha/prettier-plugin-neat-imports]: Could not process .vue file.  Please be sure that "@vue/compiler-sfc" is installed in your project.',
             );
         }
         throw err;

@@ -1,4 +1,4 @@
-# Prettier plugin sort imports <!-- omit in toc -->
+# Prettier Plugin Neat Imports <!-- omit in toc -->
 
 A prettier plugin to sort import declarations by provided Regular Expression order, while preserving side-effect import order and optionally remove unused imports.
 
@@ -110,25 +110,25 @@ import { add, filter, repeat } from '../utils';
 bun
 
 ```shell
-bun add --dev @ianvs/prettier-plugin-sort-imports
+bun add --dev @frankshrestha/prettier-plugin-neat-imports
 ```
 
 npm
 
 ```shell
-npm install --save-dev @ianvs/prettier-plugin-sort-imports
+npm install --save-dev @frankshrestha/prettier-plugin-neat-imports
 ```
 
 yarn
 
 ```shell
-yarn add --dev @ianvs/prettier-plugin-sort-imports
+yarn add --dev @frankshrestha/prettier-plugin-neat-imports
 ```
 
 pnpm
 
 ```shell
-pnpm add --save-dev @ianvs/prettier-plugin-sort-imports
+pnpm add --save-dev @frankshrestha/prettier-plugin-neat-imports
 ```
 
 **Note: If you are migrating from v3.x.x to v4.x.x, please read the [migration guidelines](./docs/MIGRATION.md)**
@@ -146,7 +146,7 @@ module.exports = {
     singleQuote: true,
     semi: true,
     // Since prettier 3.0, manually specifying plugins is required
-    plugins: ['@ianvs/prettier-plugin-sort-imports'],
+    plugins: ['@frankshrestha/prettier-plugin-neat-imports'],
     // This plugin's options
     importOrder: ['^@core/(.*)$', '', '^@server/(.*)$', '', '^@ui/(.*)$', '', '^[./]'],
     importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
@@ -158,7 +158,7 @@ module.exports = {
 
 ### Usage with @prettier/plugin-oxc
 
-This plugin is compatible with the new '@prettier/plugin-oxc' plugin available for Prettier 3.6+, but must be specified _after_ that plugin in the `plugins` configuration array (i.e. `plugins: ['@prettier/plugin-oxc', '@ianvs/prettier-plugin-sort-imports'],`).
+This plugin is compatible with the new '@prettier/plugin-oxc' plugin available for Prettier 3.6+, but must be specified _after_ that plugin in the `plugins` configuration array (i.e. `plugins: ['@prettier/plugin-oxc', '@frankshrestha/prettier-plugin-neat-imports'],`).
 
 ### How does import sort work?
 
@@ -541,7 +541,7 @@ Having some trouble or an issue? You can check [FAQ / Troubleshooting section](.
 
 ## Contribution
 
-Share your favorite config in the [show-and-tell](https://github.com/IanVS/prettier-plugin-sort-imports/discussions/categories/show-and-tell).
+Share your favorite config in the [show-and-tell](https://github.com/frankshrestha/prettier-plugin-neat-imports/discussions/categories/show-and-tell).
 
 For more information regarding contribution, please check the [Contributing Guidelines](./CONTRIBUTING.md). If you are trying to
 debug some code in the plugin, check [Debugging Guidelines](./docs/DEBUG.md)

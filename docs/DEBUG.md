@@ -32,7 +32,7 @@ Or, to debug a single unit test file
 
 ### How to run prettier in any codebase using the plugin ?
 
-First, install the `@ianvs/prettier-plugin-sort-imports` and then use following command:
+First, install the `@frankshrestha/prettier-plugin-neat-imports` and then use following command:
 
 ```shell
 ./node_modules/.bin/prettier --write '**/*.{ts,tsx,js}'
