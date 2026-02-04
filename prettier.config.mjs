@@ -15,4 +15,10 @@ export default {
         '^[./]',
     ],
     importOrderTypeScriptVersion: '5.0.0',
+    overrides: [
+        {
+            files: '**/*.md',
+            options: { tabWidth: 2 },
+        },
+    ],
 };

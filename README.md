@@ -4,7 +4,11 @@ A prettier plugin to sort import declarations by provided Regular Expression ord
 
 This project is based on [@ianvs/prettier-plugin-sort-imports](https://github.com/IanVS/prettier-plugin-sort-imports) and copies a feature from [prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports).
 
+> This plugin is incompatible with `prettier-plugin-tailwindcss`. See the reason [here](https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file#compatibility-with-other-prettier-plugins).  
+> Installing it adds a `patch-pptwcss` binary to `node_modules/.bin`, which can patch `prettier-plugin-tailwindcss`. See [Install](#install) for instructions.
+
 ## Features
+
 - Does not re-order across side-effect imports by default
 - Combines imports from the same source
 - Combines type and value imports (if `importOrderTypeScriptVersion` is set to `"4.5.0"` or higher)
@@ -51,6 +55,7 @@ This project is based on [@ianvs/prettier-plugin-sort-imports](https://github.co
 
 ### Input
 
+<!-- prettier-ignore -->
 ```javascript
 // prettier-ignore
 import { environment } from "./misguided-module-with-side-effects.js";
@@ -77,6 +82,7 @@ import { createConnection } from '@server/database';
 
 ### Output
 
+<!-- prettier-ignore -->
 ```javascript
 // prettier-ignore
 import { environment } from "./misguided-module-with-side-effects.js";
@@ -111,24 +117,28 @@ bun
 
 ```shell
 bun add --dev @frankshrestha/prettier-plugin-neat-imports
+bunx patch-pptwcss
 ```
 
 npm
 
 ```shell
 npm install --save-dev @frankshrestha/prettier-plugin-neat-imports
+npx patch-pptwcss
 ```
 
 yarn
 
 ```shell
 yarn add --dev @frankshrestha/prettier-plugin-neat-imports
+yarn exec patch-pptwcss
 ```
 
 pnpm
 
 ```shell
 pnpm add --save-dev @frankshrestha/prettier-plugin-neat-imports
+pnpm exec patch-pptwcss
 ```
 
 **Note: If you are migrating from v3.x.x to v4.x.x, please read the [migration guidelines](./docs/MIGRATION.md)**
@@ -137,6 +147,7 @@ pnpm add --save-dev @frankshrestha/prettier-plugin-neat-imports
 
 Add your preferred settings in your prettier config file.
 
+<!-- prettier-ignore -->
 ```ts
 // @ts-check
 
@@ -172,6 +183,7 @@ environment, which may affect other imports. To preserve potential side effects,
 classified as unsortable. They also behave as a barrier that other imports may not cross during the sort. So for
 example, let's say you've got these imports:
 
+<!-- prettier-ignore -->
 ```javascript
 import E from 'e';
 import F from 'f';
@@ -184,6 +196,7 @@ import A from 'a';
 Then the first three imports are sorted and the last two imports are sorted, but all imports above `c` stay above `c`
 and all imports below `c` stay below `c`, resulting in:
 
+<!-- prettier-ignore -->
 ```javascript
 import D from 'd';
 import E from 'e';
@@ -241,6 +254,7 @@ Some styles call for putting the import of `react` at the top of your imports, w
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 import * as React from 'react';
 import cn from 'classnames';
@@ -257,6 +271,7 @@ Imports of CSS files are often placed at the bottom of the list of imports, and 
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 import * as React from 'react';
 import MyApp from './MyApp';
@@ -273,6 +288,7 @@ If you want to group your imports into "chunks" with blank lines between, you ca
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 import fs from 'fs';
 
@@ -283,7 +299,8 @@ import MyApp from './MyApp';
 
 ##### 4. Group type imports separately from values
 
-If you're using Flow or TypeScript, you might want to separate out your type imports from imports of values.  And to be especially fancy, you can even group built-in types (if you're using `node:` imports), 3rd party types, and your own local type imports separately:
+If you're using Flow or TypeScript, you might want to separate out your type imports from imports of values.  
+And to be especially fancy, you can even group built-in types (if you're using `node:` imports), 3rd party types, and your own local type imports separately:
 
 ```json
 "importOrder": [
@@ -298,6 +315,7 @@ If you're using Flow or TypeScript, you might want to separate out your type imp
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 import type { Logger } from '@tanstack/react-query';
 import type { Location } from 'history';
@@ -320,6 +338,7 @@ If you are using [subpath imports](https://nodejs.org/api/packages.html#subpath-
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 import { debounce, reduce } from 'lodash';
 import { Users } from '#api';
@@ -329,7 +348,8 @@ import App from './App';
 
 ##### 6. Group aliases with local imports
 
-If you use some other method to define non-relative aliases to refer to local files without long chains of `"../../../"`, you can include those aliases in your `importOrder` to keep them grouped with your local code.  If you use the common `@` symbol for these aliases, you may want some way to group them separately from scoped npm packages, which can be done like this:
+If you use some other method to define non-relative aliases to refer to local files without long chains of `"../../../"`, you can include those aliases in your `importOrder` to keep them grouped with your local code.  
+If you use the common `@` symbol for these aliases, you may want some way to group them separately from scoped npm packages, which can be done like this:
 
 ```json
 "importOrder": [
@@ -340,6 +360,7 @@ If you use some other method to define non-relative aliases to refer to local fi
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 import { debounce, reduce } from 'lodash';
 import { Users } from '@api';
@@ -360,6 +381,7 @@ If you have pragma-comments at the top of file, or you have boilerplate copyrigh
 
 e.g.:
 
+<!-- prettier-ignore -->
 ```ts
 /**
  * @prettier
@@ -399,9 +421,11 @@ You can also do this in reverse, where the plugin is enabled globally, but disab
 
 In general, it is not safe to reorder imports that do not actually import anything (side-effect-only imports), because these imports are affecting the global scope, the order in which they occur can be important.
 
-However, in some cases, you may know that some of your side-effect imports can be sorted along with normal imports.  For example, `import "server-only"` can be used in some React applications to ensure some code only runs on the server.  For these cases, this option is an escape hatch.
+However, in some cases, you may know that some of your side-effect imports can be sorted along with normal imports.  
+For example, `import "server-only"` can be used in some React applications to ensure some code only runs on the server. For these cases, this option is an escape hatch.
 
-This option accepts an array of regex patterns which will be compared against side-effect-only imports to determine if they are safe to reorder along with the rest of your imports.  By default, no such imports are considered safe.  You can opt-in to sorting them by adding them to this option.  We recommend using `^` at the start and `$` at the end of your pattern, to be sure they match exactly.
+This option accepts an array of regex patterns which will be compared against side-effect-only imports to determine if they are safe to reorder along with the rest of your imports.  
+By default, no such imports are considered safe. You can opt-in to sorting them by adding them to this option. We recommend using `^` at the start and `$` at the end of your pattern, to be sure they match exactly.
 
 #### `importOrderTypeScriptVersion`
 
@@ -409,7 +433,7 @@ This option accepts an array of regex patterns which will be compared against si
 
 **default value:** `1.0.0`
 
-When using TypeScript, some import syntax can only be used in newer versions of TypeScript.  If you would like to enable modern features like mixed type and value imports, set this option to the semver version string of the TypeScript in use in your project.
+When using TypeScript, some import syntax can only be used in newer versions of TypeScript. If you would like to enable modern features like mixed type and value imports, set this option to the semver version string of the TypeScript in use in your project.
 
 #### `importOrderParserPlugins`
 
@@ -454,6 +478,7 @@ used to order imports within each match group.
 
 For example, when false (or not specified):
 
+<!-- prettier-ignore -->
 ```javascript
 import {CatComponent, catFilter, DogComponent, dogFilter} from './animals';
 import ExampleComponent from './ExampleComponent';
@@ -463,6 +488,7 @@ import ExampleWidget from './ExampleWidget';
 
 compared with `"importOrderCaseSensitive": true`:
 
+<!-- prettier-ignore -->
 ```javascript
 import ExampleComponent from './ExampleComponent';
 import ExampleWidget from './ExampleWidget';
@@ -480,6 +506,7 @@ A boolean value to enable or disable removal of unused imports.
 
 For example, when false (or not specified):
 
+<!-- prettier-ignore -->
 ```javascript
 import { x, y, z } from './alphabets';
 import hello from 'words';
@@ -490,6 +517,7 @@ z();
 
 compared with `"removeUnusedImports": true`:
 
+<!-- prettier-ignore -->
 ```javascript
 import { z } from './alphabets';
 import 'characters';
@@ -503,6 +531,7 @@ This plugin supports standard prettier ignore comments. By default, side-effect 
 `import "core-js/stable";`) are not sorted, so in most cases things should just work. But if you ever need to, you can
 prevent an import from getting sorted like this:
 
+<!-- prettier-ignore -->
 ```javascript
 // prettier-ignore
 import { goods } from "zealand";
@@ -528,6 +557,7 @@ Having some trouble or an issue? You can check [FAQ / Troubleshooting section](.
 
 ## Compatibility
 
+<!-- prettier-ignore -->
 | Framework              | Supported       | Note                                                                                        |
 | ---------------------- | --------------- | ------------------------------------------------------------------------------------------- |
 | JS with ES Modules     | ✅ Everything   | -                                                                                           |
